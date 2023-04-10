@@ -10,7 +10,6 @@ let mousey = 0;
 
 
 
-
 document.querySelectorAll('.colorArea .color').forEach(item => {
     item.addEventListener('click', colorClickEvent);
 });
@@ -22,13 +21,6 @@ buton.addEventListener('click', () => {
 screen.addEventListener('mousedown', mouseDownEvent);
 screen.addEventListener('mousemove', mouseMoveEvent);
 screen.addEventListener('mouseup', mouseUpEvent);
-
-screen.addEventListener('touchstart', touchstartEvent)
-screen.addEventListener('touchmove', touchMoveEvent)
-screen.addEventListener('touchend', touchEndEvent)
-
-
-
 
 
 
@@ -79,21 +71,6 @@ function draw(x, y) {
 
 
 
-function touchStartEvent(e) {
-    canDraw = true
-    mouseX = e.touches[0].pageX - screen.offsetLeft;
-    mousey = e.touches[0].pageY - screen.offsetTop;
-}
-
-function touchMoveEvent(e) {
-    if (canDraw) {
-        draw(e.touches[0].pageX, e.touches[0].pageY);
-    }
-}
-
-function touchEndEvent() {
-    canDraw = false
-}
 
 
 
