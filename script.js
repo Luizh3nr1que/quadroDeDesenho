@@ -76,38 +76,23 @@ function draw(x, y) {
     mousey = pointy
 }
 
-function touchstartEvent(e) {
+
+
+
+function touchStartEvent(e) {
     canDraw = true
-    mouseX = e.pageX - screen.offsetLeft;
-    mousey = e.pageY - screen.offsetTop;
+    mouseX = e.touches[0].pageX - screen.offsetLeft;
+    mousey = e.touches[0].pageY - screen.offsetTop;
 }
 
 function touchMoveEvent(e) {
     if (canDraw) {
-        draw(e.pageX, e.pageY);
+        draw(e.touches[0].pageX, e.touches[0].pageY);
     }
 }
 
 function touchEndEvent() {
     canDraw = false
-}
-
-function draw(x, y) {
-    let pointX = x - screen.offsetLeft;
-    let pointy = y - screen.offsetTop;
-
-    ctx.beginPath();
-    ctx.lineWidth = 5;
-    ctx.linejoin = 'round';
-    ctx.moveTo(mouseX, mousey);
-    ctx.lineTo(pointX, pointy);
-    ctx.closePath();
-    ctx.strokeStyle = currentColor;
-    ctx.stroke();
-
-
-    mouseX = pointX
-    mousey = pointy
 }
 
 
