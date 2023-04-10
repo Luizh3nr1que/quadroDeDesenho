@@ -23,6 +23,10 @@ screen.addEventListener('mousedown', mouseDownEvent);
 screen.addEventListener('mousemove', mouseMoveEvent);
 screen.addEventListener('mouseup', mouseUpEvent);
 
+screen.addEventListener('touchstart', touchstartEvent)
+screen.addEventListener('touchmove', touchMoveEvent)
+screen.addEventListener('touchend', touchEndEvent)
+
 
 
 
@@ -51,6 +55,40 @@ function mouseMoveEvent(e) {
 }
 
 function mouseUpEvent() {
+    canDraw = false
+}
+
+function draw(x, y) {
+    let pointX = x - screen.offsetLeft;
+    let pointy = y - screen.offsetTop;
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.linejoin = 'round';
+    ctx.moveTo(mouseX, mousey);
+    ctx.lineTo(pointX, pointy);
+    ctx.closePath();
+    ctx.strokeStyle = currentColor;
+    ctx.stroke();
+
+
+    mouseX = pointX
+    mousey = pointy
+}
+
+function touchstartEvent(e) {
+    canDraw = true
+    mouseX = e.pageX - screen.offsetLeft;
+    mousey = e.pageY - screen.offsetTop;
+}
+
+function touchMoveEvent(e) {
+    if (canDraw) {
+        draw(e.pageX, e.pageY);
+    }
+}
+
+function touchEndEvent() {
     canDraw = false
 }
 
