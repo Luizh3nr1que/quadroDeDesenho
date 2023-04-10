@@ -1,0 +1,16 @@
+@media (max-width: 500px) {
+    #tela {
+        height: 900px
+    }
+
+    .colorArea {
+        width: 200px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+}
